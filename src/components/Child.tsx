@@ -24,7 +24,7 @@ export class Child extends Component<{ name: string, color: string }, { counter:
       <div onClick={this.updateCounter}>
         <h1>My name is {this.props.name}.</h1>
         <h1 style={{ color: this.props.color }}>Here is my favorite color.</h1>
-        <div />
-        );
-      }
-    }
+      </div>
+    );
+  }
+}
