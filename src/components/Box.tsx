@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import Grid from 'flexbox-react'
 import styled from 'styled-components';
 
 
-const StyledGrid = styled.div`
+const StyledBox = styled.div`
   border-style: 10px solid coral;  
-  background-color: #e6d5c5;
-  height: 100%;
+  background-color: #1d7999;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 100px;
+  margin: 20px;
 `;
 
 const Box = () => {
@@ -25,9 +29,9 @@ const Box = () => {
   }
 
   return (
-    <StyledGrid>
-      <div>I'm a box, please style me as such.</div>
-    </StyledGrid>
+    <StyledBox>
+      <div>I'm a box</div>
+    </StyledBox>
   );
 }
 
