@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Child } from './components/Child';
 
 
-function App() {
+export const App = () => {
   const [visible, toggleVisible] = useState(false)
   const [color, updateColor] = useState("blue")
 
@@ -20,6 +21,7 @@ function App() {
 
   return (
     <>
+      <Child name="jade" color={color} />
       <header className="App-header">
         <div hidden={visible} onClick={changeStuff}>
           <img src={logo} className="App-logo" alt="logo" />
@@ -28,18 +30,9 @@ function App() {
           </p>
         </div>
         <h1 style={{ color: color }} >{visible ? "visible" : "hidden"}</h1>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
         <button onClick={buttonClick}>Click me please</button>
       </header>
     </>
   );
 }
 
-export default App;
