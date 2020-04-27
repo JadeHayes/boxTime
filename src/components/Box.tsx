@@ -7,9 +7,8 @@ const StyledBox = styled.div`
   width: 100px;
   height: 100px;
   text-align: center;
-  vertical-align: middle;
-  line-height: 100px;
   margin: 20px;
+  display: inline-block;
 
   &:hover {
     opacity: 0.8;
@@ -37,7 +36,6 @@ const Box = () => {
     <StyledBox
       style={{ backgroundColor: color }}
       onClick={(e) => changeColor()}>
-      <div >I'm a box</div>
     </StyledBox>
   );
 }
