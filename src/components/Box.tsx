@@ -17,7 +17,6 @@ const StyledBox = styled.div`
 `;
 
 const Box = () => {
-  const [visible, toggleVisible] = useState(false)
   const [color, updateColor] = useState("#1d7999")
 
   useEffect(() => {

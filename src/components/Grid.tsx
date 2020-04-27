@@ -12,12 +12,11 @@ const StyledGrid = styled.div`
 `;
 
 const BoxGrid = () => {
-  const [visible, toggleVisible] = useState(false)
   let baseColor = "#1d7999"
   return (
     <StyledGrid>
       {
-        [...Array(25)].map((i: number) => {
+        [...Array(30)].map((i: number) => {
           return (<Box key={i} />)
         })
       }
