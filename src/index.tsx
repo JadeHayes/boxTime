@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux'
-import boxColorReducer from './reducers/baseColor';
+import counterReducer from './reducers/counterReducer';
 import './index.css';
-import App from './App';
+import { App } from './App';
 import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
 
 
 const allReducers = combineReducers({
-  boxDefaultColor: boxColorReducer
+  boxCount: counterReducer
 })
 
 declare global {
@@ -19,20 +20,22 @@ declare global {
 
 const composeEnhancers = window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] as typeof compose || compose;
 
-export const store = createStore(
-  allReducers,
-  composeEnhancers(
-    applyMiddleware(thunk)
-  )
-)
+let middleware = applyMiddleware(thunk)
+if ((window as any).__REDUX_DEVTOOLS_EXTENSION__) {
+  middleware = compose(middleware, (window as any).__REDUX_DEVTOOLS_EXTENSION__())
+}
+
+export const store = createStore(allReducers, middleware)
 
 store.subscribe(() => {
   console.log('redux store updated.', store.getState())
 })
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );

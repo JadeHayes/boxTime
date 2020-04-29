@@ -16,7 +16,7 @@ const BoxGrid = () => {
   return (
     <StyledGrid>
       {
-        [...Array(30)].map((i: number) => {
+        [...Array(80)].map((i: number) => {
           return (<Box key={i} />)
         })
       }

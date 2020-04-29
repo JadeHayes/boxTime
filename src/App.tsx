@@ -1,7 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Dispatch } from 'react';
 import './App.css';
 import BoxGrid from './components/Grid';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+
+const mapStateToProps = (state: any) => ({
+  ...state
+})
+
+const mapDispatchToProps = (dispatch: Dispatch<any>) => {
+  return ({
+    incCount: () => { dispatch({ type: 'INC', data: 1 }) },
+  });
+}
+
 
 const StyledButton = styled.button`
   background-color: rgb(0, 140, 186);
@@ -20,7 +32,7 @@ const Styledh2 = styled.h2`
   text-align: center;
 `;
 
-const App = () => {
+export const App = () => {
   const [reset, shouldReset] = useState(false)
   useEffect(() => {
     if (reset === true) {
@@ -42,4 +54,7 @@ const App = () => {
   );
 }
 
-export default App;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
